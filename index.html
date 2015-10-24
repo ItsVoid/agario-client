@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharp.io</title>
+<link id="favicon" rel="icon" type="image/png" href="favicon-32x32.png"/>
+<link href="http://bootswatch.com/lumen/bootstrap.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="main_out.js?542"></script>
+<script>
+function connectToServer() {
+	connect("ws://changetoogarip");
+}
+</script>
+<style>body{padding:0;margin:0;overflow:hidden;}#canvas{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;}.checkbox label{margin-right:10px;}form{margin-bottom:0px;}.btn-play,.btn-settings,.btn-spectate{display:block;height:35px;}.btn-play{width:70%;float:left;}.btn-settings{width:13%;float:right;}.btn-spectate{display:block;float:right;}#adsBottom{position:absolute;left:0;right:0;bottom:0;}#adsBottomInner{margin:0px auto;width:728px;height:90px;border:5px solid white;border-radius:5px 5px 0px 0px;background-color:#FFFFFF;box-sizing:content-box;}.region-message{display:none;margin-bottom:12px;margin-left:6px;margin-right:6px;text-align:center;}#nick,#locationKnown #region{width:100%;float:left;}#locationUnknown #region{margin-bottom:15px;}#gamemode,#spectateBtn{width:33%;float:right;}#helloDialog{width:350px;background-color:#FFFFFF;margin:10px auto;border-radius:15px;padding:5px 15px 5px 15px;position:absolute;top:50%;left:50%;margin-right:-50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}#a300x250{width:300px;height:250px;background-repeat:no-repeat;background-size:contain;background-position:center center;}</style>
+</head>
+<body onload="connectToServer();">
+<div id="overlays" style="display:none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 200;">
+<div id="helloDialog">
+<form role="form">
+<div class="form-group">
+    <div style="float: left; margin-left: 20px;"><h2>Sharp.io</h2></div>
+<br clear="both"/>
+</div>
+<div class="form-group">
+<input id="nick" class="form-control" placeholder="Nick" maxlength="20"/>
+<br/>
+<br/>
+</div>
+<div class="form-group">
+<div>
+<p></p>
+</div>
+<button type="submit" id="playBtn" onclick="setNick(document.getElementById('nick').value); return false;" class="btn btn-play btn-primary btn-needs-server">Play</button>
+<button onclick="$('#settings, #instructions').toggle();return false;" class="btn btn-info btn-settings"><span class="fa fa-cog"></span></button>
+<a href="upload.html" class="btn btn-info btn-settings" onclick="window.open('uploads.html','Upload een skin','width=500,height=330,scrollbars=no,toolbar=no'); return false"><span class="fa fa-upload"></span></a>
+<br clear="both"/>
+</div>
+<div id="settings" class="checkbox" style="display:none;">
+<div class="form-group">
+<button onclick="spectate(); return false;" class="btn btn-warning btn-spectate btn-block">Spectate</button>
+<br clear="both"/>
+</div>
+<div style="margin: 6px;">
+<label><input type="checkbox" checked="yes" onchange="setDarkTheme($(this).is(':checked'));"> Dark theme</label>
+<label><input type="checkbox" onchange="setAcid($(this).is(':checked'));"> Acid mode</label>
+</div>
+</div>
+</form>
+<hr style="margin-bottom: 7px; "/>
+ 
+</div>
+</div>
+<div id="connecting" style="display:none;position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 100; background-color: rgba(0,0,0,0.5);">
+<div style="width: 350px; background-color: #FFFFFF; margin: 100px auto; border-radius: 15px; padding: 5px 15px 5px 15px;">
+<center>
+<p><img src="http://i.imgur.com/mSmSAwB.gif"></img></p>
+</center></div>
+</div>
+<canvas id="canvas" width="800" height="600"></canvas>
+<div style="font-family:'Ubuntu'">&nbsp;</div>
+</body>
+</html>
